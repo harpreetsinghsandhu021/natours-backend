@@ -5,8 +5,6 @@ const reviewRoutes = require("./reviewRoutes");
 
 const router = express.Router();
 
-router.use(authController.protect);
-
 router.use("/:tourId/reviews", reviewRoutes);
 
 router
@@ -20,6 +18,7 @@ router
     tourController.createTour
   );
 
+router.use(authController.protect);
 router.route("/get-tour-stats").get(tourController.getTourStats);
 router.route("/getMonthlyPlan/:year").get(tourController.getMonthlyPlan);
 
